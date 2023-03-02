@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Create an account</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      form {
+        width: 50%;
+      }
+      label {
+        margin-top: 10px;
+        display: block;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      input[type="submit"] {
+        background-color: #808080;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #808080;
+      }
+      p {
+        margin-top: 20px;
+      }
+    </style>
+    <script>
+      function check() {
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (username.trim() === "") {
+          alert("다시 체크.");
+          return false;
+        }
+        if (email.trim() === "" || !emailRegex.test(email)) {
+          alert("다시 체크.");
+          return false;
+        }
+        if (password.trim().length < 5) {
+          alert("다시 체크.");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Create an account</h1>
+    <form action="/register" method="post">
+      <div>
+        <label for="username"><strong>Full name:</strong></label>
+        <input type="text" placeholder="ex. John Doe" id="username" name="username">
+      </div>
+      <div>
+        <label for="email"><strong>Email Address:</strong></label>
+        <input type="email" placeholder="ex. johndoe@gmail.com" id="email" name="email">
+      </div>
+      <div>
+        <label for="password"><strong>Password:</strong></label>
+        <input type="password" placeholder="Min. 5 characters" id="password" name="password">
+      </div>
+      <p>By clicking "Create your account" below, you agree to our terms of service and privacy policy.</p>
+      <div>
+        <input type="submit" value="Create your account" onclick="return check();">
+      </div>
+    </form>
+  </body>
+</html>
